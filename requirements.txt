@@ -1,0 +1,11 @@
+pandas>=2.1
+numpy>=1.26
+matplotlib>=3.8
+seaborn>=0.13
+statsmodels>=0.14
+scipy>=1.11
+pyarrow>=14.0
+duckdb>=1.0
+requests>=2.31
+pytest>=8.0
+jupyter>=1.0
