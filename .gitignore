@@ -1,0 +1,20 @@
+# Downloaded or locally built data stays local (only the small sample is committed)
+data/*
+!data/sample/
+data/sample/*
+!data/sample/*.parquet
+!data/sample/README.md
+*.duckdb
+*.duckdb.wal
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+*.egg-info/
+
+# Personal study notes
+LEARN.md
