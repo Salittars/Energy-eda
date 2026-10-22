@@ -1,0 +1,124 @@
+{
+  "01_price_timeseries": {
+    "takeaway": "The average day-ahead price fell from 41.7 EUR/MWh (Oct 2018-Sep 2019) to 29.9 EUR/MWh (Oct 2019-Sep 2020), a 28% drop, with the 30-day mean bottoming at 16.0 EUR/MWh around 03 May 2020.",
+    "numbers": {
+      "mean_y1": 41.6978,
+      "mean_y2": 29.9255,
+      "change_pct": -28.2323,
+      "r30_min": 15.9928,
+      "r30_min_date": "2020-05-03",
+      "min_price": -90.01,
+      "min_time": "2019-06-08 12:00 UTC",
+      "max_price": 200.04,
+      "max_time": "2020-09-21 17:00 UTC"
+    }
+  },
+  "02_seasonality_heatmap": {
+    "takeaway": "Prices follow the working week: the highest average is 52.7 EUR/MWh on Thu at 19:00, the lowest 14.3 EUR/MWh on Sun at 14:00 when demand is low and solar output peaks; Sundays average 25.2 vs 39.0 EUR/MWh on weekdays.",
+    "numbers": {
+      "weekday_peak": 52.669,
+      "weekday_peak_hour": 19,
+      "weekday_peak_day": "Thu",
+      "low": 14.306,
+      "low_hour": 14,
+      "low_day": "Sun",
+      "weekday_mean": 39.0196,
+      "sunday_mean": 25.1516
+    }
+  },
+  "03_price_vs_wind_residual_load": {
+    "takeaway": "Wind alone explains only 15% of price variance (r = -0.39), but residual load explains 68% (r = 0.83); each extra GW of residual load adds about 1.19 EUR/MWh.",
+    "numbers": {
+      "r_wind": -0.3919,
+      "r_residual": 0.825,
+      "r2_residual": 0.6807,
+      "slope_eur_per_gw": 1.1886,
+      "r2_wind": 0.1536
+    }
+  },
+  "04_merit_order_wind_deciles": {
+    "takeaway": "The merit-order effect: in the windiest 10% of hours (30.7-46.1 GW) the mean price is 19.4 EUR/MWh vs 42.3 in the calmest 10%, 54% lower, and that decile holds 265 of the 484 negative-price hours.",
+    "numbers": {
+      "calm_mean": 42.3041,
+      "windy_mean": 19.4156,
+      "calm_range": [
+        0.136,
+        3.288
+      ],
+      "windy_range": [
+        30.692,
+        46.064
+      ],
+      "windy_negative_hours": 265,
+      "total_negative_hours": 484,
+      "drop_pct": 54.1046
+    }
+  },
+  "05_negative_prices_by_month": {
+    "takeaway": "484 hours had negative prices (195 in the first year, 289 in the second); the worst month was February 2020 with 84 hours, and 65% of all negative hours fell on weekends.",
+    "numbers": {
+      "total": 484,
+      "y1": 195,
+      "y2": 289,
+      "top_month": "2020-02",
+      "top_count": 84,
+      "weekend_share": 0.6508,
+      "mean_negative_price": -16.1562
+    }
+  },
+  "06_load_wind_distributions": {
+    "takeaway": "Load stays inside a narrow band (31.9-76.9 GW, coefficient of variation 0.18) with two humps for nights/weekends and working hours, while wind is right-skewed (skew 0.90, median 11.7 vs mean 14.4 GW, CV 0.72) and runs from 3.3 to 30.7 GW between its 10th and 90th percentiles.",
+    "numbers": {
+      "load_mean": 55.1488,
+      "load_median": 54.7245,
+      "load_min": 31.923,
+      "load_max": 76.925,
+      "wind_mean": 14.3728,
+      "wind_median": 11.728,
+      "wind_skew": 0.9012,
+      "wind_p10": 3.2883,
+      "wind_p90": 30.6914,
+      "load_cv": 0.1811,
+      "wind_cv": 0.7176,
+      "rl_min": 0.648,
+      "rl_max": 72.655
+    }
+  },
+  "07_price_acf_pacf": {
+    "takeaway": "Price is highly persistent: correlation with the previous hour is 0.95, it falls to 0.40 at 18 h, climbs back to 0.64 at 24 h and peaks again at 0.59 after one week, so yesterday's and last week's same hour are natural forecasting features.",
+    "numbers": {
+      "acf_1": 0.9532,
+      "acf_trough_lag": 18,
+      "acf_trough": 0.4025,
+      "acf_24": 0.6359,
+      "acf_168": 0.5864
+    }
+  },
+  "08_stl_decomposition": {
+    "takeaway": "STL splits the daily price into a trend that falls from 55.6 to a low of 17.5 EUR/MWh (Mar 2020), a weekly cycle worth -8.6 EUR/MWh on Sundays and +2.5 on weekdays, and a residual that still carries 34% of the variance (weather and fuel shocks).",
+    "numbers": {
+      "trend_start": 55.5746,
+      "trend_end": 42.2427,
+      "trend_min": 17.5443,
+      "trend_min_date": "2020-03-25",
+      "sunday_effect": -8.6128,
+      "saturday_effect": -3.9946,
+      "weekday_effect": 2.502,
+      "resid_share": 0.3364,
+      "seasonal_share": 0.1468,
+      "trend_share": 0.4391
+    }
+  },
+  "09_correlation_matrix": {
+    "takeaway": "Residual load is the single best linear correlate of price (r = 0.83), ahead of load (0.49) and wind (-0.39); the 4-station wind speed tracks national wind output at r = 0.73.",
+    "numbers": {
+      "price_vs_Load": 0.4871,
+      "price_vs_Wind gen.": -0.3919,
+      "price_vs_Solar gen.": -0.1934,
+      "price_vs_Residual load": 0.825,
+      "price_vs_Wind speed 100 m": -0.3553,
+      "price_vs_Temperature": -0.1324,
+      "windspeed_vs_windgen": 0.7297
+    }
+  }
+}
